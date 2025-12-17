@@ -1,0 +1,487 @@
+/* =============================================
+   RESET & GLOBAL
+   ============================================= */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", sans-serif;
+  background: linear-gradient(135deg, #0f0f23, #1a1a3e);
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* =============================================
+   APP LAYOUT
+   ============================================= */
+.app {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header {
+  text-align: center;
+  padding: 30px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 16px;
+  margin-bottom: 24px;
+}
+
+.header h1 {
+  font-size: 2rem;
+  margin-bottom: 8px;
+}
+
+.header p {
+  opacity: 0.9;
+}
+
+.main {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+@media (max-width: 800px) {
+  .main {
+    grid-template-columns: 1fr;
+  }
+}
+
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* =============================================
+   SECTION HEADER
+   ============================================= */
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.section-header h2 {
+  color: #a5b4fc;
+}
+
+.btn-group {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-small {
+  padding: 8px 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background 0.2s;
+}
+
+.btn-small:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* =============================================
+   USER LIST
+   ============================================= */
+.user-list {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.users-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.user-card {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s;
+  position: relative;
+}
+
+.user-card:hover {
+  background: rgba(255, 255, 255, 0.12);
+  transform: translateX(4px);
+}
+
+.avatar {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.user-info {
+  flex: 1;
+  min-width: 0;
+}
+
+.user-info h3 {
+  font-size: 1rem;
+  margin-bottom: 4px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.user-info p {
+  font-size: 0.8rem;
+  color: #94a3b8;
+  margin: 2px 0;
+}
+
+.btn-delete {
+  background: rgba(239, 68, 68, 0.2);
+  border: none;
+  padding: 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.user-card:hover .btn-delete {
+  opacity: 1;
+}
+
+.btn-delete:hover {
+  background: rgba(239, 68, 68, 0.4);
+}
+
+/* =============================================
+   USER DETAIL
+   ============================================= */
+.user-detail {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 16px;
+  position: relative;
+}
+
+.user-detail.empty {
+  text-align: center;
+  padding: 40px;
+  color: #64748b;
+}
+
+.btn-close {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border: none;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-close:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.detail-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 20px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatar-large {
+  width: 64px;
+  height: 64px;
+  background: linear-gradient(135deg, #6366f1, #8b5cf6);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.username {
+  color: #a5b4fc;
+}
+
+.detail-body {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.info-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.info-row span {
+  font-size: 1.2rem;
+  width: 24px;
+}
+
+.info-row label {
+  font-size: 0.75rem;
+  color: #64748b;
+  display: block;
+  margin-bottom: 2px;
+}
+
+.info-row p {
+  font-size: 0.9rem;
+}
+
+.info-row small {
+  color: #64748b;
+  font-style: italic;
+}
+
+/* =============================================
+   POST LIST
+   ============================================= */
+.post-list {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 20px;
+  border-radius: 16px;
+}
+
+.post-form {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+  margin-bottom: 20px;
+}
+
+.post-form h3 {
+  margin-bottom: 12px;
+  font-size: 1rem;
+}
+
+.post-form input,
+.post-form textarea {
+  width: 100%;
+  padding: 12px;
+  border: none;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  margin-bottom: 10px;
+  font-family: inherit;
+  font-size: 0.9rem;
+  resize: vertical;
+}
+
+.post-form input::placeholder,
+.post-form textarea::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.post-form button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  background: #22c55e;
+  color: #fff;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background 0.2s;
+}
+
+.post-form button:hover {
+  background: #16a34a;
+}
+
+.post-form button:disabled {
+  background: #64748b;
+  cursor: not-allowed;
+}
+
+.posts-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-height: 350px;
+  overflow-y: auto;
+}
+
+.post-card {
+  display: flex;
+  gap: 12px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+}
+
+.post-content {
+  flex: 1;
+}
+
+.post-content h4 {
+  font-size: 0.95rem;
+  margin-bottom: 8px;
+  text-transform: capitalize;
+}
+
+.post-content p {
+  font-size: 0.85rem;
+  color: #94a3b8;
+  line-height: 1.5;
+}
+
+.post-meta {
+  font-size: 0.75rem;
+  color: #64748b;
+  margin-top: 8px;
+  display: block;
+}
+
+.btn-delete-small {
+  background: rgba(239, 68, 68, 0.2);
+  border: none;
+  padding: 6px 10px;
+  border-radius: 6px;
+  cursor: pointer;
+  align-self: flex-start;
+}
+
+.btn-delete-small:hover {
+  background: rgba(239, 68, 68, 0.4);
+}
+
+.empty-msg {
+  text-align: center;
+  color: #64748b;
+  padding: 30px;
+}
+
+/* =============================================
+   LOADING & ERROR
+   ============================================= */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px;
+}
+
+.spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.1);
+  border-top-color: #6366f1;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+  margin-bottom: 12px;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.error-box {
+  text-align: center;
+  padding: 24px;
+  background: rgba(239, 68, 68, 0.1);
+  border-radius: 12px;
+}
+
+.error-box button {
+  margin-top: 12px;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 8px;
+  background: #6366f1;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* =============================================
+   FOOTER
+   ============================================= */
+.footer {
+  margin-top: 24px;
+  padding: 24px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  text-align: center;
+}
+
+.footer h3 {
+  margin-bottom: 20px;
+  color: #a5b4fc;
+}
+
+.concepts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
+}
+
+.concept {
+  background: rgba(0, 0, 0, 0.2);
+  padding: 16px;
+  border-radius: 12px;
+}
+
+.concept h4 {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+}
+
+.concept p {
+  font-size: 0.8rem;
+  color: #64748b;
+}
+
+/* =============================================
+   SCROLLBAR
+   ============================================= */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #6366f1;
+  border-radius: 3px;
+}
